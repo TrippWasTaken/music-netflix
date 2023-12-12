@@ -7,16 +7,6 @@ import ReactPlayer from 'react-player';
 
 const HeroCard = () => {
   const { data, isLoading } = useHero();
-
-  // useEffect(() => {
-  // //   function handleResize() {
-  //     const test = document.getElementById('video-aligner')?.getBoundingClientRect();
-  //     console.log(test);
-  //     console.log('resized to: ', window.innerWidth, 'x', window.innerHeight);
-  //   }
-
-  //   window.addEventListener('resize', handleResize);
-  // });
   return isLoading ? (
     <div>loading</div>
   ) : (
@@ -27,7 +17,6 @@ const HeroCard = () => {
         margin: '0',
         aspectRatio: '16/9',
         maxHeight: '75%',
-        position: 'absolute',
         top: '0',
         left: '0',
         borderRadius: '0',
@@ -98,6 +87,17 @@ const HeroCard = () => {
           <Text h2 css={{ position: 'relative', top: data.translatedName ? '-40px' : '0', paddingBottom: '1rem' }}>
             {data.author}
           </Text>
+          <Badge
+            variant="bordered"
+            css={{
+              position: 'relative',
+              textTransform: 'capitalize',
+              top: data.translatedName ? '-40px' : '0',
+              marginLeft: 'auto'
+            }}
+          >
+            {data.genre}
+          </Badge>
           <Text
             css={{
               width: '100%',
@@ -111,18 +111,7 @@ const HeroCard = () => {
           >
             {data.description}
           </Text>
-          <Badge
-            variant="bordered"
-            css={{
-              position: 'relative',
-              textTransform: 'capitalize',
-              top: data.translatedName ? '-40px' : '0',
-              marginLeft: 'auto'
-            }}
-          >
-            {data.genre}
-          </Badge>
-          <Button ghost icon={<PlayCircleFilled />} css={{ position: 'relative', bottom: 0 }}>
+          <Button ghost icon={<PlayCircleFilled />} css={{ position: 'relative', bottom: 0, marginBottom: '1rem' }}>
             Play now
           </Button>
         </Container>

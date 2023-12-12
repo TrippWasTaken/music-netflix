@@ -4,6 +4,7 @@ import { Button, Text } from '@nextui-org/react';
 import useCurrentUser from '@/hooks/useCurrentUser';
 import Header from '@/components/Header';
 import HeroCard from '@/components/HeroCard';
+import VideoCarosuel from '@/components/videoCarosuel';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -23,6 +24,7 @@ export default function Home() {
     <>
       <Header />
       <HeroCard />
+      <VideoCarosuel />
     </>
   );
 }
