@@ -1,27 +1,23 @@
-import { Card } from '@nextui-org/react';
-import { FC } from 'react';
+'use client';
+import { videoType } from '@/global';
+import { Card, CardBody, Image, card } from '@nextui-org/react';
 
 type Props = {
-  video: any
-  cardWidth: number
+  video: videoType,
+  cardWidth: number,
+  margin: number
 };
-const VideoCard = ({ video, cardWidth }: Props) => {
-const margin = 10
+const VideoCard = ({ video, cardWidth, margin }: Props) => {
   return (
-    <Card
-      isPressable
-      css={{ margin: `${margin}px`, display: 'inline-block', width: `${cardWidth - (margin*2)}px`, aspectRatio: '16/9' }}
-    >
-      <Card.Body css={{ p: 0 }}>
-        <Card.Image
+    <Card isPressable style={{ margin: `${margin}px`, minWidth: `${cardWidth}px` }} className="p-0">
+      <CardBody className="p-0 m-0 aspect-video overflow-hidden">
+        <Image
+          className="aspect-video"
+          isZoomed
           src={`https://img.youtube.com/vi/${video.source}/hqdefault.jpg`}
-          objectFit="cover"
-          css={{
-            aspectRatio: '16/9'
-          }}
-          alt={video.title}
+          alt={video.name}
         />
-      </Card.Body>
+      </CardBody>
     </Card>
   );
 };

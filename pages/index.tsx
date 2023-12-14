@@ -1,6 +1,5 @@
 import { signOut, getSession } from 'next-auth/react';
 import { NextPageContext } from 'next';
-import { Button, Text } from '@nextui-org/react';
 import useCurrentUser from '@/hooks/useCurrentUser';
 import Header from '@/components/Header';
 import HeroCard from '@/components/HeroCard';
@@ -19,12 +18,13 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Home() {
   const { data: user } = useCurrentUser();
-  console.log(user);
   return (
     <>
-      <Header />
+      <Header user={user} />
       <HeroCard />
-      <VideoCarosuel />
+      <div className="lg:absolute md:-bottom-2 lg:-bottom-5 z-100 max-w-full">
+        <VideoCarosuel />
+      </div>
     </>
   );
 }
